@@ -1,5 +1,5 @@
 # A-Start-To-AWS_EKS
-Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed Kubernetes service. Customers such as Intel, Snap, Intuit, GoDaddy, and Autodesk trust EKS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.
+Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed Kubernetes service. Many companies uses EKS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.
 
 Please refer https://aws.amazon.com/eks/
 
