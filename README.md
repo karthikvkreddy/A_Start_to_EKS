@@ -4,7 +4,7 @@ Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed Kubernetes ser
 Please refer https://aws.amazon.com/eks/
 
 ## Modules
-1. <a href="">Kubernetes Basics</a>
+1. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Kubenetes-Basics">Kubernetes Basics</a>
 2. <a href="">Configuring eks cluster</a> 
 3. <a href="">Magic with eksctl</a>
 4. <a href="">Deploying simple application</a>
