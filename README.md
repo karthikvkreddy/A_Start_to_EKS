@@ -7,7 +7,7 @@ Please refer https://aws.amazon.com/eks/
 1. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Kubenetes-Basics">Kubernetes Basics</a>
 2. <a href="">Configuring eks cluster</a> 
 3. <a href="">Magic with eksctl</a>
-4. <a href="">Deploying simple application</a>
+4. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Deploying_Application">Deploying simple application</a>
 5. <a href="">Autoscaling</a>
 6. <a href="">Monitoring</a>
 7. <a href="">Cloud Trials</a>
