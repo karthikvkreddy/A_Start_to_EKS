@@ -11,6 +11,7 @@ Please refer https://aws.amazon.com/eks/
 5. <a href="">Autoscaling</a>
 6. <a href="">Monitoring</a>
 7. <a href="">Cloud Trials</a>
+8. <a href="">Logging to CloudWatch logs using Fluentd</a>
 8. <a href="">Tracing using X-Ray</a>
 8. <a href="">CI-CD deployment</a>
 
