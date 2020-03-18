@@ -10,6 +10,8 @@ Please refer https://aws.amazon.com/eks/
 4. <a href="">Deploying simple application</a>
 5. <a href="">Autoscaling</a>
 6. <a href="">Monitoring</a>
-7. <a href="">CI-CD deployment</a>
+7. <a href="">Cloud Trials</a>
+8. <a href="">CI-CD deployment</a>
+
 
 
