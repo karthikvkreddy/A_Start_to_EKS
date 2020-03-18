@@ -13,10 +13,12 @@ As distributed systems evolve, monitoring and debugging services becomes challen
 ### step 2:DEPLOY X-RAY DAEMONSET
     
     $docker build -t xray-daemon .
-    Create an Amazon ECR repository
+    
 
   Create an ECR repository for the xray-daemon. Replace us-east-1 with your region, if desired.
-
+   
+   Create an Amazon ECR repository
+    
     $(aws ecr get-login --no-include-email --region us-east-1)
     $aws ecr create-repository --repository-name xray-daemon
   
