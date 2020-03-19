@@ -12,8 +12,11 @@ Please refer https://aws.amazon.com/eks/
 6. <a href="">Monitoring</a>
 7. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/CloudTrail">Cloud Trials</a>
 8. <a href="">Logging to CloudWatch logs using Fluentd</a>
-8. <a href="">Tracing using X-Ray</a>
-8. <a href="">CI-CD deployment</a>
+9. <a href="">Tracing using X-Ray</a>
+10. <a href="">CI-CD deployment</a>
 
+miscellaneous
+
+1. <a href="">YAML Basics</a>
 
 
