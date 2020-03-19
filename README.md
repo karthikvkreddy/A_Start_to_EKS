@@ -17,6 +17,6 @@ Please refer https://aws.amazon.com/eks/
 
 miscellaneous
 
-1. <a href="">YAML Basics</a>
+1. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/blob/master/YAML_basics.md">YAML Basics</a>
 
 
