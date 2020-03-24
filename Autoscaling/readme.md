@@ -33,7 +33,8 @@ Initialize Helm on both client and server using Tiller Service Account:
     $ kubectl run php-apache --image=k8s.gcr.io/hpa-example --requests=cpu=200m --expose --port=80
 
 ### Step 6: Autoscale the deployment
-	  $ kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
+    
+    $ kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
 The above command will create a Horizontal Pod Autoscaler that maintains between 1 and 10 replicas of the Pods controlled by the php-apache deployment we created in 
 
 ### step 7: To check status of pods
@@ -59,7 +60,6 @@ In the previous termninal , watch the HPA with the following command
     $kubectl get hpa -w
     
     
-
 ## Cluster Autoscaler
 
 ### Step 1:Modify the Min/Max Sizes of the Autoscaling Group
@@ -118,7 +118,7 @@ Press Ctrl + C to exit the logs.
 Deploy and Scale the Nginx Deployment.
 
 
-3. eploy the nginx deployment.
+3. Deploy the nginx deployment.
 ```
 $kubectl apply -f nginx.yaml
 ```
