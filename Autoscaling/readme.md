@@ -62,3 +62,95 @@ In the previous termninal , watch the HPA with the following command
 
 ## Cluster Autoscaler
 
+### Step 1:Modify the Min/Max Sizes of the Autoscaling Group
+
+1. log in to the AWS Management Console .
+2. Navigate to the EC2 service.
+3. Click Autoscaling Groups in the left sidebar.
+4. Select the autoscaling group that has already been created for you.
+
+Note the name of the autoscaling group (we'll need it later).
+
+5. Click Actions > Edit.
+6. In the Edit details menu, configure the following settings:
+  Min: 2
+  Max: 8
+
+7. Click Save.
+
+### Step 2:Configure the Cluster Autoscaler
+1. Go back to your terminal application
+2. List the contents of the home directory.
+```ls```
+3. Edit the cluster_autoscaler.yaml file.
+4. vim cluster_autoscaler.yaml
+5. Locate the <AUTOSCALING GROUP NAME>placeholder, and replace it with the autoscaling group name we found in the AWS Management Console.
+6. Press Escape, then type :wq to quit the vim text editor.
+
+### Step 3:Apply the IAM Policy to the Worker Node Group Role
+1. List the contents of the asg-policy.json file.
+2. cat asg-policy.json
+3. Copy the content of asg-policy.json to your clipboard.
+4. Switch to the AWS Management Console.
+5. Navigate to the IAM service.
+6. Click Roles in the left sidebar.
+7. Type "node" in the search bar.
+8. Click the name of the role that appears in the search results to open it.
+9. Click + Add inline policy.
+10. Click the JSON tab.
+11. Delete the default text from the policy editor, and paste in the content of asg-policy.json you copied to your clipboard earlier.
+12. Click Review policy.
+13. Name the policy "CA".
+14. Click Create policy.
+
+### step 4: Deploy the Cluster Autoscaler
+Go back to your terminal application.
+1. Run the following command:
+```
+$kubectl apply -f cluster_autoscaler.yaml
+```
+2. Check the cluster autoscaler logs.
+```
+$kubectl logs -f deployment/cluster-autoscaler -n kube-system
+```
+Press Ctrl + C to exit the logs.
+
+Deploy and Scale the Nginx Deployment.
+
+
+3. eploy the nginx deployment.
+```
+$kubectl apply -f nginx.yaml
+```
+
+Verify that the deployment was successful.
+```
+$kubectl get deployment/nginx-scaleout
+```
+Scale the Nginx Deployment
+
+4. run the following command:
+```
+$kubectl scale --replicas=10 deployment/nginx-scaleout
+```
+Check the autoscaler logs again.
+```
+$kubectl logs -f deployment/cluster-autoscaler -n kube-system
+```
+
+
+Check the nodes.
+```
+$kubectl get nodes
+
+```
+Delete the nginx and cluster autoscaler deployments.
+```
+$kubectl delete -f cluster_autoscaler.yaml
+$kubectl delete -f nginx.yaml
+```
+
+
+
+
+
