@@ -78,7 +78,7 @@ Test the configuration
  
 ### Step 8: Test cluster nodes:
 	
-    $kubectl apply -f aws-auth-cm.yaml
+    $kubectl get nodes
 
 Output shows all nodes on the cluster
 ```	
