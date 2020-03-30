@@ -135,4 +135,24 @@ kubectl get secret --namespace grafana grafana -o jsonpath="{.data.admin-passwor
 ### step 5: Grafana dashboard
 Thier exist 2 dashboards 1 for cluster, 1 more for pods.
 
-For cluster
+#### For cluster Monitoring Dashboard:
+  For creating a dashboard to monitor the cluster:
+
+1. Click ’+’ button on left panel and select ‘Import’.
+2. Enter 3119 dashboard id under Grafana.com Dashboard.
+3. Click ‘Load’.
+4. Select ‘Prometheus’ as the endpoint under prometheus data sources drop down.
+5. Click ‘Import’.
+
+This will show monitoring dashboard for all cluster nodes
+
+#### Pods Monitoring Dashboard:
+  For creating a dashboard to monitor all the pods:
+
+1. Click ’+’ button on left panel and select ‘Import’.
+2. Enter 6417 dashboard id under Grafana.com Dashboard.
+3. Click ‘Load’.
+4. Enter Kubernetes Pods Monitoring as the Dashboard name.
+5. Click change to set the Unique identifier (uid).
+6. Select ‘Prometheus’ as the endpoint under prometheus data sources drop down.s
+7. Click ‘Import’.
