@@ -11,8 +11,8 @@ Please refer https://aws.amazon.com/eks/
 5. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Autoscaling">Autoscaling</a>
 6. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Monitoring">Monitoring</a>
 7. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/CloudTrail">Cloud Trials</a>
-8. <a href="">Logging to CloudWatch logs using Fluentd</a>
-9. <a href="">Tracing using X-Ray</a>
+8. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/fluentd">Logging to CloudWatch logs using Fluentd</a>
+9. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Tracing-using-Xray">Tracing using X-Ray</a>
 10. <a href="">CI-CD deployment</a>
 
 miscellaneous
