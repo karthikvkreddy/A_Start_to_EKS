@@ -8,7 +8,7 @@ Please refer https://aws.amazon.com/eks/
 2. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Configuring_EKS_Cluster">Configuring eks cluster</a> 
 3. <a href="">Magic with eksctl</a>
 4. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Deploying_Application">Deploying simple application</a>
-5. <a href="">Autoscaling</a>
+5. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Autoscaling">Autoscaling</a>
 6. <a href="">Monitoring</a>
 7. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/CloudTrail">Cloud Trials</a>
 8. <a href="">Logging to CloudWatch logs using Fluentd</a>
