@@ -17,8 +17,9 @@ Key: kubernetes.io/role/internal-elb  Value: 1
 ### Step 1: Deploying the ALB ingress controller
 Verify the Name of the Cluster with the CLI
 
+```
 aws eks list-clusters
-
+```
 Output
 ```
 
