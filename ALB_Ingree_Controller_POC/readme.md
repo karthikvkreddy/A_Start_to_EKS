@@ -123,7 +123,6 @@ kubectl get ingress -o wide
 output:
 ```
 NAME       HOSTS   ADDRESS                                                                PORTS   AGE
-blog       *                                                                              80      6s
 mywebapp   *       dd591b5c-default-mywebapp-633c-704431140.us-east-1.elb.amazonaws.com   80      3m45s
 
 ```
