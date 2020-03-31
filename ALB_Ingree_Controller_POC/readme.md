@@ -33,7 +33,7 @@ Create an IAM policy called ALBIngressControllerIAMPolicy for your worker node i
 ```
 aws iam create-policy \
 --policy-name ALBIngressControllerIAMPolicy \
---policy-document file://alb-ingress-controller-policy.json
+--policy-document file://iam-policy.json
 ```
 Get the IAM role name for your worker nodes. Use the following command to print the aws-auth configmap from where you can fetch the IAM role name:
 
@@ -110,28 +110,6 @@ replicaset.apps/blog-5db564d456   3         3         0       7s
 
 ```
 
-Ingress object YAML file
-```
-cat > ingress.yaml <<EOF
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: blog
-  labels:
-    app: blog
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-spec:
-  rules:
-    - http:
-        paths:
-          - path: /*
-            backend:
-              serviceName: blog
-              servicePort: 80
-EOF
-```
 Deploy ingress object
 
 ```
