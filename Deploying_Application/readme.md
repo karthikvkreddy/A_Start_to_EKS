@@ -7,19 +7,19 @@ Let deploy simple ngnxi server on kubernetes
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app_name
+  name: dev_app_name
 spec:
   selector:
     matchLabels:
-      run: app_name
+      run: dev_app_name
   replicas: 2
   template:
     metadata:
       labels:
-        name: app_name
+        name: dev_app_name
     spec:
       containers:
-      - name: app_name
+      - name: dev_app_name
         image: <IMAGE-URL>
         ports:
         - containerPort: 80
@@ -37,10 +37,10 @@ under **spec**, we need to give details of docker images, where container will r
 apiVersion: v1
 kind: Service
 metadata:
-  name:  app_name
+  name:  sev_app_name
 spec:
   selector:
-    app: app_name
+    app: dev_app_name
   type: LoadBalancer
   ports:
     - port: 80
