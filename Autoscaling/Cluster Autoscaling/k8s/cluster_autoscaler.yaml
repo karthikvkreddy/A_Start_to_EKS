@@ -115,6 +115,8 @@ spec:
       app: cluster-autoscaler
   template:
     metadata:
+      annotations:
+        iam.amazonaws.com/role: CP-kube2iam-ca-role
       labels:
         app: cluster-autoscaler
     spec:
@@ -136,9 +138,9 @@ spec:
             - --cloud-provider=aws
             - --skip-nodes-with-local-storage=false
             - --nodes=2:8:<AUTOSCALING_GROUP_NAME>
-          env:
+          env: 
             - name: AWS_REGION
-              value: us-east-1
+              value: ap-south-1
           volumeMounts:
             - name: ssl-certs
               mountPath: /etc/ssl/certs/ca-certificates.crt
@@ -148,3 +150,4 @@ spec:
         - name: ssl-certs
           hostPath:
             path: "/etc/ssl/certs/ca-bundle.crt"
+

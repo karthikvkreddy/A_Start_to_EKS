@@ -1,13 +1,14 @@
 
 #### Deploy EKS cluster
-Change the parameter values in `Configuring_EKS_Cluster/scripts/deploy-cluster.sh` (if needed) and run the script.
+Change the parameter values in `infrastructure/scripts/deploy-cluster.sh` (if needed) and run the script.
 ```bash
-sh Configuring_EKS_Cluster/scripts/deploy-cluster.sh 
+sh infrastructure/scripts/deploy-cluster.sh <profile-name>
 ```
+If you don't specify `<profile-name>` it will take **default** as `<profile-name>`.
 
 This will launch the cloudformation stack to deploy the EKS cluster.
 
-Install [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) for Kubernetes 1.15 or later version.
+Install [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) for Kubernetes 1.15.
 Install [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)
 
 #### Configure EKS Access
@@ -15,7 +16,7 @@ Install [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide
 Create or update your kubeconfig for your cluster.
 
 ```bash
-aws eks --region <AWS_REGION> update-kubeconfig --name <eks-cluster-name> 
+aws eks --region <AWS_REGION> update-kubeconfig --name <eks-cluster-name> --profile <profile-name>
 ```
 
 Test the configuration.
@@ -25,11 +26,11 @@ kubectl get svc
 ```
 
 ##### Provision EKS Nodegroup (Worker nodes)
-Change the parameter values in `Configuring_EKS_Cluster/scripts/deploy-eks-managed-nodegroup.sh` (if needed) and run the script.
+Change the parameter values in `infrastructure/scripts/deploy-eks-managed-nodegroup.sh` (if needed) and run the script.
 
-Before running the script create a EC2 Key-Pairs with the Name `{PROJECT_NAME}-{ENVIRONMENT}` depending on the `ENVIRONMENT` value in the script.
+Before running the script create a EC2 Key-Pairs with the Name `CP-{ENVIRONMENT}` depending on the `ENVIRONMENT` value in the script.
 ```bash
-sh Configuring_EKS_Cluster/scripts/deploy-eks-managed-nodegroup.sh
+sh infrastructure/scripts/deploy-eks-managed-nodegroup.sh
 ```
 
 This will launch the cloudformation stack to deploy the eks nodegroup. Watch the status of your nodes and wait for them to reach the `Ready` status.
