@@ -25,7 +25,7 @@ kubectl get svc
 ```
 
 ##### Provision EKS Nodegroup (Worker nodes)
-Change the parameter values in Configuring_EKS_Cluster/scripts/deploy-eks-managed-nodegroup.sh` (if needed) and run the script.
+Change the parameter values in `Configuring_EKS_Cluster/scripts/deploy-eks-managed-nodegroup.sh` (if needed) and run the script.
 
 Before running the script create a EC2 Key-Pairs with the Name `{PROJECT_NAME}-{ENVIRONMENT}` depending on the `ENVIRONMENT` value in the script.
 ```bash
