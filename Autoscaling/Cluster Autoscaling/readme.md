@@ -34,11 +34,11 @@ kubectl -n kube-system describe configmap aws-auth
 ```
 
 ```
-aws iam create-role --role-name CP-kube2iam-ca-role <Kube2iam-ROLE_NAME> \
+aws iam create-role --role-name <Kube2iam-ROLE_NAME> \
  --assume-role-policy-document file://kube2iam-ca-role-policy.json 
 ```
 
-Attaching required policies to above created role `<Kube2iam-ROLE_NAME>'.
+Attaching required policies to above created role `<Kube2iam-ROLE_NAME>`.
 ```
 aws iam create-policy \
 --policy-name <kube2iam-POLICY_NAME> \
