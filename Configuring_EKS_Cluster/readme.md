@@ -1,98 +1,48 @@
-- Date: 17/03/2020
-# Creating infrastructure for EKS cluster and provision worker nodes
 
-### Step 1:Creating a Role
-  create role with eks service and apply permissions with name for ex. eksRole
-
-### Step 2: Create VPC
-  cloudformation template: “https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-11-15/amazon-eks-vpc-sample.yaml”
-
-  Specifications of above VPC:
-	
-  “VPC for your cluster with either 3 public subnets, or two public subnets and two private subnets, which are provided with internet access through a NAT gateway. “
-
-  Steps to upload template:
-
-   cloudformation ->create stack-> using S3 ->paste above link
-
-### Step 3: Create EKS cluster-
-  
-  Go to EKS-> create cluster->select role above created -> select VPC created before -> security group ->create cluster
-  
-### Step 4 : Installing kubectl
-```
-$curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/kubectl
-$ chmod +x ./kubectl
-$ mkdir $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export   PATH=$HOME/bin:$PATH
-$ echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+#### Deploy EKS cluster
+Change the parameter values in `Configuring_EKS_Cluster/scripts/deploy-cluster.sh` (if needed) and run the script.
+```bash
+sh Configuring_EKS_Cluster/scripts/deploy-cluster.sh 
 ```
 
-Verify installation:
-      
-     $kubectl version --short --client  
+This will launch the cloudformation stack to deploy the EKS cluster.
 
-### Step 5:Installing aws-iam-authenticator
-  
-    $ curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator
-    $ chmod +x ./aws-iam-authenticator
-    $ mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
-    echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
-	
-Verify installation:
-	  
-    $aws-iam-authenticator help
+Install [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) for Kubernetes 1.15 or later version.
+Install [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)
 
-### Step 6: Configure kubectl for EKS
-   
-    $aws eks --region <AWS_REGION> update-kubeconfig --name  <eks-cluster-name>
- 	
-Test the configuration
-    
-    $kubectl get svc
+#### Configure EKS Access
 
-## Step 7: Provisioning worker nodes
-	
-  For this we can use AMAZON-EKS-OPTIMIZED-AMI ,
-	Template: https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-11-15/amazon-eks-nodegroup.yaml
- 
-  For complete spec. Above aws-eks-ami  Ref. below github:
-  https://github.com/awslabs/amazon-eks-ami 
+Create or update your kubeconfig for your cluster.
 
-  Go to CloudFormation-> create stack-> past above link -> launch stack
-
-  Here, select VPC, nodegroup name, cluster name .
-
-  Download aws-auth-cm.yaml using following command:
-    
-    $curl -o aws-auth-cm.yaml https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-11-15/aws-auth-cm.yaml
-
-  Edit aws-auth-cm.yaml file
-
-    $vim aws-auth-cm.yaml
-   
-  Add nodeinstanceRoleARN into this.This ARN can be obtained from above stack output.
-
-    $kubectl apply -f aws-auth-cm.yaml
-
-  This will enable worker nodes to join the eks cluster. Wait till all the nodes are ready.
- 
-### Step 8: Test cluster nodes:
-	
-    $kubectl get nodes
-
-Output shows all nodes on the cluster
-```	
-[ec2-user@ip-172-31-87-246 ~]$ kubectl get nodes
-NAME                              STATUS   ROLES    AGE    VERSION
-ip-192-168-142-73.ec2.internal    Ready    <none>   152m   v1.14.9-eks-1f0ca9
-ip-192-168-156-184.ec2.internal   Ready    <none>   152m   v1.14.9-eks-1f0ca9
-ip-192-168-202-255.ec2.internal   Ready    <none>   152m   v1.14.9-eks-1f0ca9
+```bash
+aws eks --region <AWS_REGION> update-kubeconfig --name <eks-cluster-name> 
 ```
 
-### Step 9: IAM Authentication
-	
-By default, only the IAM user/role which creates the EKS cluster has the access to the EKS control plane. However, we can add other IAM users/roles to access an Amazon EKS cluster
- aws-auth ConfigMap snippet:
+Test the configuration.
+
+```bash
+kubectl get svc
+```
+
+##### Provision EKS Nodegroup (Worker nodes)
+Change the parameter values in Configuring_EKS_Cluster/scripts/deploy-eks-managed-nodegroup.sh` (if needed) and run the script.
+
+Before running the script create a EC2 Key-Pairs with the Name `{PROJECT_NAME}-{ENVIRONMENT}` depending on the `ENVIRONMENT` value in the script.
+```bash
+sh Configuring_EKS_Cluster/scripts/deploy-eks-managed-nodegroup.sh
+```
+
+This will launch the cloudformation stack to deploy the eks nodegroup. Watch the status of your nodes and wait for them to reach the `Ready` status.
+```
+$ kubectl get nodes --watch
+```
+
+#### Configure EKS Access
+
+When we create an Amazon EKS cluster, the IAM entity user or role, such as a federated user that creates the cluster, is automatically granted system:masters permissions in the cluster's RBAC configuration. To grant additional AWS users or roles the ability to interact with your cluster, you must edit the aws-auth ConfigMap within Kubernetes.
+
+##### aws-auth ConfigMap snippet
+&nbsp;
 ```
 apiVersion: v1
 kind: ConfigMap
@@ -108,11 +58,14 @@ data:
         - system:nodes
 ```
 
-Open the aws-auth ConfigMap.:
-    
-    $ kubectl edit -n kube-system configmap/aws-auth
+Open the aws-auth ConfigMap.
+
+```bash
+$ kubectl edit -n kube-system configmap/aws-auth
+```
 
 Add the IAM role/user to you want to provide access to and save the file.
+
 ```
 apiVersion: v1
 kind: ConfigMap
@@ -140,12 +93,5 @@ data:
       username: <IAM_USER_NAME2>
       groups:
         - system:masters
-
-	```
-
-
-
-
-
-
+```
 
