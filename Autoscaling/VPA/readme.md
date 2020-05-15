@@ -41,30 +41,30 @@ vpa-updater-786b96955c-bgp9d                1/1     Running   0          8s
 
 #### Testing Vertical Pod Autoscaler 
 
-##### Testing on `helloearth` deployment
-The `helloearth-deployment.yml` file has been updated to include VPA configurations.
+##### Testing on `helloworld` deployment
+The `helloworld-deployment.yml` file has been updated to include VPA configurations.
 
-Delete and redeploy `helloearth` deployment for the new changes.
+Delete and redeploy `helloworld` deployment for the new changes.
 ```bash
-kubectl delete app/k8s/helloearth-deployment.yml
+kubectl delete app/k8s/helloworld-deployment.yml
 ```
 
 ```bash
-kubectl apply app/k8s/helloearth-deployment.yml
+kubectl apply app/k8s/helloworld-deployment.yml
 ```
 
-Get the pods from the `helloearth` application.
+Get the pods from the `helloworld` application.
 ```
-kubectl get pods -l app=helloearth 
+kubectl get pods -l app=helloworld
 ```
 output:
 ```
-helloearth-c7d89d6db-rglf5   1/1     Running   0          48s
-helloearth-c7d89d6db-znvz5   1/1     Running   0          48s
+helloworld-c7d89d6db-rglf5   1/1     Running   0          48s
+helloworld-c7d89d6db-znvz5   1/1     Running   0          48s
 ```
 Describe one of the pods to view its CPU and memory reservation.
 ```
-kubectl describe pod <helloearth_pod_name>
+kubectl describe pod <helloworld_pod_name>
 ```
 Output:
 
@@ -78,9 +78,9 @@ Output:
 
 We can see that the original pod reserves 100 millicpu of CPU and 50 Mebibytes of memory. For this example application, 100 millicpu is less than the pod needs to run, so it is CPU-constrained. It also reserves much less memory than it needs. The Vertical Pod Autoscaler `vpa-recommender` deployment analyzes the helloearth pods to see if the CPU and memory requirements are appropriate. If adjustments are needed, the `vpa-updater` relaunches the pods with updated values.
 
-Now, get a shell for the `helloearth` container:
+Now, get a shell for the `helloworld` container:
 ```bash
-kubectl exec -it helloearth-deployment -- /bin/sh
+kubectl exec -it helloworld-deployment -- /bin/sh
 ```
 And then run this command in above shell:
 ```bash
@@ -91,11 +91,11 @@ The above command will try to utilize slightly above 500 millicores (repeatedly 
 
 In a new terminal, wait for the  `vpa-updater` to launch a new helloearth pod. This should take a minute or two. You can monitor the pods with the following command.
 ```
-kubectl get --watch pods -l app=helloearth
+kubectl get --watch pods -l app=helloworld
 ```
 When a new `helloearth` pod is started, describe it and view the updated CPU and memory reservations.
 ```
-kubectl describe pod <new_helloearth_pod_name>
+kubectl describe pod <new_helloworld_pod_name>
 ```
 Output:
 ```
@@ -107,9 +107,9 @@ Output:
 ```
 Here you can see that the CPU reservation has increased to 587 millicpu, which is over five times the original value. The memory has increased to 262,144 Kilobytes, which is around 250 Mebibytes, or five times the original value. This pod was under-resourced, and the Vertical Pod Autoscaler corrected our estimate with a much more appropriate value.
 
-Describe the `helloearth-vpa` resource to view the new recommendation.
+Describe the `helloworld-vpa` resource to view the new recommendation.
 ```
-kubectl describe vpa/helloearth-vpa
+kubectl describe vpa/helloworld-vpa
 ```
 Output:
 ```
