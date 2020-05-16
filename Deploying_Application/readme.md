@@ -58,7 +58,7 @@ ports are set to 80 where it is listening to the container application.
 
 ### step 3:applying both deployment and service application onto kubenetes
 ```
-    $kubectl apply -f ./Deployment.yaml
+    $kubectl apply -f ./deployment.yaml
     $kubectl apply -f ./service.yaml
 ```
 ### step 4:list all the pods running
