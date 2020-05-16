@@ -1,22 +1,22 @@
 # Deploying Application on kubenetes
 
-Let deploy simple ngnxi server on kubernetes
+Let deploy simple `Hellowrold` application on kubernetes
 ### step 1:creating a yaml file for application Deployment 
    Lets us undestand Deployment.yaml file
 ```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dev_app_name
+  name: <DEPLOYMENT_NAME>
 spec:
   selector:
     matchLabels:
-      run: dev_app_name
+      app: <APP_NAME>
   replicas: 2
   template:
     metadata:
       labels:
-        name: dev_app_name
+        name: <APP_NAME>
     spec:
       containers:
       - name: dev_app_name
@@ -37,10 +37,10 @@ under **spec**, we need to give details of docker images, where container will r
 apiVersion: v1
 kind: Service
 metadata:
-  name:  sev_app_name
+  name:  <SERVICE_NAME>
 spec:
   selector:
-    app: dev_app_name
+    app: <APP_NAME>
   type: LoadBalancer
   ports:
     - port: 80
@@ -51,13 +51,22 @@ In the above file contains **Kind: Service** .This allow us to interact with the
 under **spec**, specifying **type: LoadBalancer** allows kubenetes to assign loadbalancer to our application, where it 
 generates DNS address.
 
+Here, selector `app: <APP_NAME>` will match this labels with deployment file and refer to the mactched deployment object.
+
 ports are set to 80 where it is listening to the container application. 
 
 
 ### step 3:applying both deployment and service application onto kubenetes
-    $kubectl apply -f ./Deployment.yaml
+```
+    $kubectl apply -f ./deployment.yaml
     $kubectl apply -f ./service.yaml
-    
+```
 ### step 4:list all the pods running
+```
     $kubectl get pods
-    
+```
+### step 5:accessing our app
+```
+    $kubectl get svc
+```
+ copy LoadBalancer DNS and paste it on browser to access your application
