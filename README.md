@@ -15,8 +15,10 @@ Please refer https://aws.amazon.com/eks/
 9. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Tracing-using-Xray">Tracing using X-Ray</a>
 10. <a href="">CI-CD deployment</a>
 
-miscellaneous
+#### miscellaneous
 
 1. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/blob/master/YAML_basics.md">YAML Basics</a>
 
 
+#### Feedback Session
+We would love to hear your valuable thoughts, concerns with anything so we can improve! [Please give feedback](https://forms.gle/5vRFDDmERSmjpQrT8)
