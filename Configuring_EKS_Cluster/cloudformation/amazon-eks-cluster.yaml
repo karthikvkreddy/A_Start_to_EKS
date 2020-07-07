@@ -7,7 +7,6 @@ Parameters:
   Project:
     Description: Project code the resources should be associated with.
     Type: String
-    Default: 'CP'
   VpcId:
     Type: String
     Description: >
