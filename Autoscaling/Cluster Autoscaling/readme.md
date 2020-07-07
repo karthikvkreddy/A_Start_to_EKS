@@ -20,7 +20,7 @@ This policy tells our IAM role can allow us to assume role for any resource in a
 
 To apply policy:
 ```
-aws iam put-role-policy --role-name <NODE_INSTANCE_ROLE_NAME> --policy-name kube2iamAssumeRolePolicy --policy-document file://kube2iam-assume-role-policy.json --profile <profile-name>
+aws iam put-role-policy --role-name <NODE_INSTANCE_ROLE_NAME> --policy-name kube2iamAssumeRolePolicy --policy-document file://kube2iam-assume-role-policy.json 
 ```
 
 Next, creating roles for each pod. Each role will need a policy that has only the permissions that the pod needs to perform its function e.g. listing s3 objects, writing to DynamoDB, reading from SQS, etc. 
@@ -58,7 +58,7 @@ annotations:
 
 #### Deploy Kube2iam chart **(if not deployed already)**
 
-Follow steps from [root README](../../README.md) file for deploying `kube2iam` chart.
+Follow steps from [link](https://github.com/helm/charts/tree/master/stable/kube2iam)  for deploying `kube2iam` chart.
 
 #### Deploy Cluster Autoscaler
 

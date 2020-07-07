@@ -50,7 +50,7 @@ kubectl delete app/k8s/helloworld-deployment.yml
 ```
 
 ```bash
-kubectl apply app/k8s/helloworld-deployment.yml
+kubectl apply -f ./sample-app/
 ```
 
 Get the pods from the `helloworld` application.
@@ -76,7 +76,7 @@ Output:
 ...
 ```
 
-We can see that the original pod reserves 100 millicpu of CPU and 50 Mebibytes of memory. For this example application, 100 millicpu is less than the pod needs to run, so it is CPU-constrained. It also reserves much less memory than it needs. The Vertical Pod Autoscaler `vpa-recommender` deployment analyzes the helloearth pods to see if the CPU and memory requirements are appropriate. If adjustments are needed, the `vpa-updater` relaunches the pods with updated values.
+We can see that the original pod reserves 100 millicpu of CPU and 50 Mebibytes of memory. For this example application, 100 millicpu is less than the pod needs to run, so it is CPU-constrained. It also reserves much less memory than it needs. The Vertical Pod Autoscaler `vpa-recommender` deployment analyzes the helloworld pods to see if the CPU and memory requirements are appropriate. If adjustments are needed, the `vpa-updater` relaunches the pods with updated values.
 
 Now, get a shell for the `helloworld` container:
 ```bash
@@ -89,11 +89,11 @@ while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done
 The above command will try to utilize slightly above 500 millicores (repeatedly using CPU for 0.5s and sleeping 0.5s).
 
 
-In a new terminal, wait for the  `vpa-updater` to launch a new helloearth pod. This should take a minute or two. You can monitor the pods with the following command.
+In a new terminal, wait for the  `vpa-updater` to launch a new helloworld pod. This should take a minute or two. You can monitor the pods with the following command.
 ```
 kubectl get --watch pods -l app=helloworld
 ```
-When a new `helloearth` pod is started, describe it and view the updated CPU and memory reservations.
+When a new `helloworld` pod is started, describe it and view the updated CPU and memory reservations.
 ```
 kubectl describe pod <new_helloworld_pod_name>
 ```
@@ -116,7 +116,7 @@ Output:
 ...
   Recommendation:
     Container Recommendations:
-      Container Name:  helloearth
+      Container Name:  helloworld
       Lower Bound:
         Cpu:     100m
         Memory:  262144k
