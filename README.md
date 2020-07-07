@@ -1,15 +1,23 @@
 # A-Start-To-AWS_EKS
-Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed Kubernetes service. Customers such as Intel, Snap, Intuit, GoDaddy, and Autodesk trust EKS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.
+Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed Kubernetes service. Many companies uses EKS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.
 
 Please refer https://aws.amazon.com/eks/
 
 ## Modules
-1. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Kubenetes-Basics">Kubernetes Basics</a>
-2. <a href="">Configuring eks cluster</a> 
-3. <a href="">Magic with eksctl</a>
-4. <a href="">Deploying simple application</a>
-5. <a href="">Autoscaling</a>
-6. <a href="">Monitoring</a>
-7. <a href="">CI-CD deployment</a>
+
+1. Kubernetes Basics
+2. Configuring eks cluster
+3. Deploying simple application
+4. Autoscaling
+5. Monitoring
+6. Cloud Trials
+7. Logging to CloudWatch logs using Fluentd
 
 
+#### miscellaneous
+
+1. AML Basics
+
+
+#### Feedback Session
+We would love to hear your valuable thoughts, concerns with anything so we can improve! [Please give feedback](https://forms.gle/5vRFDDmERSmjpQrT8)
