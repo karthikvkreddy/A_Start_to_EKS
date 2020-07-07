@@ -4,20 +4,19 @@ Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed Kubernetes ser
 Please refer https://aws.amazon.com/eks/
 
 ## Modules
-1. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Kubenetes-Basics">Kubernetes Basics</a>
-2. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Configuring_EKS_Cluster">Configuring eks cluster</a> 
-3. <a href="">Magic with eksctl</a>
-4. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Deploying_Application">Deploying simple application</a>
-5. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Autoscaling">Autoscaling</a>
-6. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Monitoring">Monitoring</a>
-7. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/CloudTrail">Cloud Trials</a>
-8. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/fluentd">Logging to CloudWatch logs using Fluentd</a>
-9. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Tracing-using-Xray">Tracing using X-Ray</a>
-10. <a href="">CI-CD deployment</a>
+
+1. Kubernetes Basics
+2. Configuring eks cluster
+3. Deploying simple application
+4. Autoscaling
+5. Monitoring
+6. Cloud Trials
+7. Logging to CloudWatch logs using Fluentd
+
 
 #### miscellaneous
 
-1. <a href="https://github.com/karthikreddy958/A-Start-To-AWS_EKS/blob/master/YAML_basics.md">YAML Basics</a>
+1. AML Basics
 
 
 #### Feedback Session
