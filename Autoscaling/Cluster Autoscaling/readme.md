@@ -58,7 +58,7 @@ annotations:
 
 #### Deploy Kube2iam chart **(if not deployed already)**
 
-Follow steps from [root README](../../README.md) file for deploying `kube2iam` chart.
+Follow steps from [click link](https://github.com/helm/charts/tree/master/stable/kube2iam) file for deploying `kube2iam` chart.
 
 #### Deploy Cluster Autoscaler
 

@@ -2,9 +2,9 @@
 
 Kubernetes consists of 3 different types of Autoscaling:
 
-1. [Horizantal Pod Autoscaler](https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Autoscaling/HPA)
-2. [Cluster Autoscaler](https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Autoscaling/Cluster_Autoscaler)
-3. [Vertical Pod Autoscaler](https://github.com/karthikreddy958/A-Start-To-AWS_EKS/tree/master/Autoscaling/VPA)
+1. Horizantal Pod Autoscaler
+2. Cluster Autoscaler
+3. Vertical Pod Autoscaler]
  
 
 **References:**
