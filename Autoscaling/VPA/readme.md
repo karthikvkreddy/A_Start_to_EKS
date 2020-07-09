@@ -46,11 +46,11 @@ The `helloworld-deployment.yml` file has been updated to include VPA configurati
 
 Delete and redeploy `helloworld` deployment for the new changes.
 ```bash
-kubectl delete app/k8s/helloworld-deployment.yml
+kubectl delete sample-app/helloworld-deployment.yml
 ```
 
 ```bash
-kubectl apply app/k8s/helloworld-deployment.yml
+kubectl apply sample-app/helloworld-deployment.yml
 ```
 
 Get the pods from the `helloworld` application.
